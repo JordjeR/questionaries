@@ -3,6 +3,7 @@ package com.homework.controllers;
 import com.homework.entities.Person;
 import com.homework.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,9 +20,8 @@ public class MainController {
     }
 
     @ResponseBody
-    @PostMapping(path = "persons/add/")
-    public void addPerson(Person person) {
-//        Person person = new Person(3L, name);
+    @PostMapping(path = "persons/add/", consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    public void addPerson(@RequestBody Person person) {
         System.out.println(person);
         personService.add(person);
     }
