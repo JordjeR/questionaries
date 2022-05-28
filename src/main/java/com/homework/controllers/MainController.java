@@ -20,15 +20,14 @@ public class MainController {
     }
 
     @ResponseBody
-    @PostMapping(path = "persons/add/", consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    @PostMapping(path = "persons/add/"/*, consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}*/)
     public void addPerson(@RequestBody Person person) {
-        System.out.println(person);
         personService.add(person);
     }
 
     @ResponseBody
     @GetMapping(path = "/persons")
-    public List<Person> getPersons() {
+    public List<Person> getListPersons() {
         return personService.findAll();
     }
 }

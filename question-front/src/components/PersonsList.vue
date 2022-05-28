@@ -2,39 +2,30 @@
   <div>
     <h1>Persons list</h1>
     <hr>
-    <PersonItem v-for="person of persons"
+    <PersonItem v-for="(person, i) in allPersons"
                 v-bind:person="person"
+                v-bind:ind="i"
     />
   </div>
 </template>
 <script>
-import PersonsService from "@/services/PersonsService";
 import PersonItem from "@/components/PersonItem";
+import {mapGetters, mapActions} from "vuex";
 
 export default {
   name: "PersonsList",
-
   components: {
     PersonItem,
-    PersonsService
   },
-  data() {
-    return {
-      persons: []
-    }
-  },
+  computed: mapGetters(["allPersons"]),
   methods: {
-    getPersons() {
-      PersonsService.getPersons().then(response => {
-        this.persons = response.data;
-      })
-    }
+    ...mapActions(["fetchPerson"])
   },
-
-  created() {
-    this.getPersons();
+  mounted() {
+    this.fetchPerson();
   }
 }
 </script>
+
 <style scoped>
 </style>

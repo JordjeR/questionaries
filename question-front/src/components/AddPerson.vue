@@ -19,7 +19,8 @@ export default {
           id: 3,
           name: this.person
         }
-        this.$emit('add-person', newPerson)
+        this.$emit('add-person', newPerson);
+        this.person = '';
     }
   }
 }

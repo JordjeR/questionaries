@@ -1,5 +1,6 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from "vue";
+import store from "./store/index.js";
+import App from "./App.vue";
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
@@ -13,4 +14,5 @@ Vue.use(IconsPlugin)
 
 new Vue({
     render: h => h(App),
+    store
 }).$mount('#app')
