@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:8088/")
+//@CrossOrigin("http://localhost:8088/")
 public class MainController {
 
     private final PersonService personService;
@@ -20,7 +20,7 @@ public class MainController {
     }
 
     @ResponseBody
-    @PostMapping(path = "persons/add/"/*, consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE}*/)
+    @PostMapping(path = "persons/add/", produces = MediaType.APPLICATION_JSON_VALUE)
     public void addPerson(@RequestBody Person person) {
         personService.add(person);
     }
