@@ -21,7 +21,7 @@ public class MainController {
     }
 
     @ResponseBody
-    @PostMapping(path = "/persons/add/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/persons/add", produces = MediaType.APPLICATION_JSON_VALUE)
     public void addPerson(@RequestBody Person person) {
         personService.add(person);
     }
