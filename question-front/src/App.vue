@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <AddPerson @add-person="addPerson"/>
-    <PersonsList/>
+    <h1>Person application</h1>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import PersonsList from "@/components/PersonsList";
-import AddPerson from "@/components/AddPerson";
+import PersonsList from "@/views/PersonsList";
+import AddPerson from "@/views/AddPerson";
 import PersonsService from "@/services/PersonsService";
 
 export default {

@@ -9,11 +9,17 @@
   </div>
 </template>
 <script>
-import PersonItem from "@/components/PersonItem";
+import PersonItem from "@/views/PersonItem";
 import {mapGetters, mapActions} from "vuex";
+import UserService from "@/services/UserService";
 
 export default {
   name: "PersonsList",
+  data() {
+    return {
+      persons: [],
+    }
+  },
   components: {
     PersonItem,
   },
@@ -22,6 +28,9 @@ export default {
     ...mapActions(["fetchPerson"])
   },
   mounted() {
+    /*UserService.getUserBoard().then(response => {
+      this.persons = response.data;
+    })*/
     this.fetchPerson();
   }
 }

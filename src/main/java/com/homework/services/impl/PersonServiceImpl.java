@@ -11,8 +11,13 @@ import java.util.List;
 @Service
 public class PersonServiceImpl implements PersonService {
 
+    private final PersonRepository personRepository;
+
     @Autowired
-    private PersonRepository personRepository;
+    public PersonServiceImpl(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
+
     @Override
     public void add(Person person) {
         personRepository.save(person);

@@ -1,16 +1,12 @@
 package com.homework.entities;
 
-import lombok.*;
+import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "persons")
-@AllArgsConstructor
-@Setter
-@Getter
-@Builder
-@NoArgsConstructor
+@Data
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
