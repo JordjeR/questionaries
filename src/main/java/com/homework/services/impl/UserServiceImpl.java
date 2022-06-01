@@ -42,11 +42,11 @@ public class UserServiceImpl implements UserService {
         user.setCreated(new Date());
         user.setUpdated(new Date());
 
-        User registerUser = userRepository.save(user);
+        userRepository.save(user);
 
-        log.info("IN method register user - {} successfully was saved", registerUser);
+        log.info("IN method register user - {} successfully was saved", user);
 
-        return registerUser;
+        return user;
     }
 
     @Override

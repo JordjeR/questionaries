@@ -21,8 +21,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/auth")
-//@CrossOrigin(origins = "*", maxAge = 3600)
-//@CrossOrigin(origins = "http://localhost:8088/")
 public class AuthRestController {
 
 
@@ -30,14 +28,13 @@ public class AuthRestController {
     private final JwtTokenProvider jwtTokenProvider;
     private final UserService userService;
 
-    private final RoleService roleService;
-
     @Autowired
-    public AuthRestController(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UserService userService, RoleService roleService) {
+    public AuthRestController(AuthenticationManager authenticationManager,
+                              JwtTokenProvider jwtTokenProvider,
+                              UserService userService) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.userService = userService;
-        this.roleService = roleService;
     }
 
     @PostMapping(path = "/login")
