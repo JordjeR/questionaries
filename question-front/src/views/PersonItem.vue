@@ -8,7 +8,6 @@
 export default {
   name: "PersonItem",
   props: {
-    ind: Number,
     person: {
       type: Object,
       require: true

@@ -2,16 +2,17 @@
   <div>
     <h1>Persons list</h1>
     <hr>
-    <PersonItem v-for="(person, i) in allPersons"
-                v-bind:person="person"
-                v-bind:ind="i"
-    />
+    <AddPerson/>
+    <hr>
+    <PersonItem
+        v-for="person in allPersons" v-bind:person="person"/>
+    <hr>
+    <button type="button" class="btn btn-danger" @click="logout">Выйти из аккаунта</button>
   </div>
 </template>
 <script>
 import PersonItem from "@/views/PersonItem";
-import {mapGetters, mapActions} from "vuex";
-import UserService from "@/services/UserService";
+import AddPerson from "@/views/AddPerson";
 
 export default {
   name: "PersonsList",
@@ -21,11 +22,23 @@ export default {
     }
   },
   components: {
+    AddPerson,
     PersonItem,
   },
-  computed: mapGetters(["allPersons"]),
+  computed: {
+    allPersons() {
+      return this.$store.getters.allPersons;
+    }
+  },
   methods: {
-    ...mapActions(["fetchPerson"])
+    fetchPerson() {
+      this.$store.dispatch("fetchPerson");
+    },
+    logout() {
+      this.$store.dispatch("authMod/logout")
+          .then(() => this.$router.push("/auth/login"))
+          .catch(error => console.log("Произошла ошибка" + error));
+    }
   },
   mounted() {
     /*UserService.getUserBoard().then(response => {

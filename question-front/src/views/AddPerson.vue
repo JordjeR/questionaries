@@ -1,6 +1,9 @@
 <template>
-  <b-form @submit.prevent="onSubmit">
-    <input type="text" v-model="person"/>
+  <b-form @submit="onSubmit">
+    <input type="text"
+           v-model="person"
+           @keyup.enter="onSubmit"
+    />
     <b-button id="create" variant="success" type="submit">Create</b-button>
   </b-form>
 </template>
@@ -16,10 +19,9 @@ export default {
   methods: {
     onSubmit() {
         const newPerson = {
-          id: 3,
           name: this.person
         }
-        this.$emit('add-person', newPerson);
+        this.$store.dispatch('addPerson', newPerson);
         this.person = '';
     }
   }

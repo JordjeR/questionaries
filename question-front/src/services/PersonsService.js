@@ -1,17 +1,14 @@
 import axios from "axios";
 
-const PERSON_GET = 'http://localhost:8080/persons';
-const PERSON_ADD = 'http://localhost:8080/persons/add/';
+const API_PERSON = 'http://localhost:8080';
 
 class PersonsService {
     getPersons() {
-        return axios.get(PERSON_GET);
+        return axios.get(API_PERSON);
     }
 
     addPerson(person) {
-        // const jsonPerson = JSON.stringify(person);
-        console.log(person)
-        axios.post(PERSON_ADD, person).then(res => {});
+        return axios.post(API_PERSON + '/api/persons/add', person);
     }
 }
 

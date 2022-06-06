@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import person from "./modules/Persons";
+import person from "./modules/PersonsModule";
 import authMod from "./modules/AuthModule"
 
 Vue.use(Vuex)

@@ -2,9 +2,8 @@ import axios from 'axios';
 
 const AUTH_URL = 'http://localhost:8080';
 
-class AuthService {
+class AuthenticationService {
     login(user) {
-        debugger
         return axios
             .post(AUTH_URL + '/auth/login', {
                 username: user.username,
@@ -17,9 +16,6 @@ class AuthService {
                 return response.data;
             });
     }
-    logout() {
-        localStorage.removeItem('user');
-    }
     register(user) {
         return axios.post(AUTH_URL + '/auth/register', {
             username: user.username,
@@ -29,5 +25,8 @@ class AuthService {
             password: user.password
         });
     }
+    logout() {
+        localStorage.removeItem('user');
+    }
 }
-export default new AuthService();
+export default new AuthenticationService();

@@ -35,7 +35,6 @@
                v-model="password" class="form-control" id="password" placeholder="Введите пароль" name="password"
                required>
       </div>
-
       <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
       <router-link to="/" type="href" class="btn btn-link">Назад</router-link>
     </form>
@@ -54,6 +53,10 @@ export default {
       password: ''
     }
   },
+  computed: {
+  },
+  mounted() {
+  },
   methods: {
     onSubmit() {
       const user = {
@@ -63,18 +66,12 @@ export default {
         login: this.login,
         password: this.password
       }
-      debugger
-      this.$store.dispatch("authMod/register", user).then(() => {
-        this.$router.push("/auth")
-      }, error => {
-        console.log(error);
-      })
+      this.$store.dispatch("authMod/register", user);
+      this.$router.push('/auth/login');
     }
   }
-
 }
 </script>
 
 <style scoped>
-
 </style>
